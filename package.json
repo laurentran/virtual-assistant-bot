@@ -1,0 +1,23 @@
+{
+  "name": "virtual-assistant-bot",
+  "version": "1.0.0",
+  "description": "virtual assistant bot for US DX startups",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurentran/virtual-assistant-bot.git"
+  },
+  "author": "US DX Startup Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/laurentran/virtual-assistant-bot/issues"
+  },
+  "homepage": "https://github.com/laurentran/virtual-assistant-bot#readme",
+  "dependencies": {
+    "botbuilder": "^3.2.1",
+    "restify": "^4.1.1"
+  }
+}
