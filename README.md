@@ -27,6 +27,12 @@ TODO: Write history
 
 TODO: Write credits
 
-## License
+## Code of Conduct
 
-TODO: Write license
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
+contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Copyright and license
+
+Code released under [the MIT license](https://github.com/laurentran/virtual-assistant-bot/blob/master/LICENSE)
