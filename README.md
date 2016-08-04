@@ -4,11 +4,12 @@ Virtual assistant for US DX Startups
 
 ## Installation
 
-TODO: Describe the installation process
+Download the bot emulator [here] (https://aka.ms/bf-bc-emulator)
 
 ## Usage
 
-TODO: Write usage instructions
+Start bot in console window with `node app.js`
+Start emulator and chat with bot
 
 ## Contributing
 
