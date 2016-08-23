@@ -29,7 +29,7 @@ var bot = new builder.UniversalBot(connector);
 server.post('/api/messages', connector.listen());
 server.get(/.*/, restify.serveStatic({
     'directory' : '.',
-    'default'   : 'index.html'
+    'default'   : 'static/index.html'
 }));
 
 //=========================================================
@@ -39,7 +39,7 @@ server.get(/.*/, restify.serveStatic({
 // Create LUIS recognizer that points at our model
 var model = nconf.get("LUIS_model_URL");
 var recognizer = new builder.LuisRecognizer(model);
-var intents = new builder.IzntentDialog({ recognizers: [recognizer] });
+var intents = new builder.IntentDialog({ recognizers: [recognizer] });
 
 bot.dialog('/', intents);
 
@@ -54,7 +54,7 @@ intents
     })
     //LUIS intent matches
     .matches('AzureCompliance', '/compliance')
-    //.onDefault(builder.DialogAction.send("I'm sorry. I didn't understand, but I'm learning."));
+    .onDefault(builder.DialogAction.send("I'm sorry. I didn't understand, but I'm learning."));
 
 bot.dialog('/compliance', function (session, args) {
     session.send("You asked about Azure Compliance.");
