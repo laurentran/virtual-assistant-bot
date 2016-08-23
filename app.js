@@ -89,11 +89,11 @@ bot.dialog('/rude', function (session, args) {
 });
 bot.dialog('/didnotunderstand', [
     function (session, args) {
-        console.log(session.message.text);
+        console.log("[Utterance]", session.message.text);
         builder.Prompts.text(session, "I'm sorry. I didn't understand, but I'm learning. What was your intent here?")
     }, 
     function (session, results) {
-        console.log(session.message.text);
+        console.log("[Intent]", session.message.text);
         session.endDialog("Ok, I've logged this for review. Please ask another question.");
     }
 ]);
