@@ -1,0 +1,82 @@
+{
+  "luis_schema_version": "1.3.0",
+  "name": "StartupVirtualAssistant",
+  "desc": "",
+  "culture": "en-us",
+  "intents": [
+    {
+      "name": "AzureCompliance"
+    },
+    {
+      "name": "None"
+    }
+  ],
+  "entities": [],
+  "composites": [],
+  "bing_entities": [],
+  "actions": [],
+  "model_features": [],
+  "regex_features": [],
+  "utterances": [
+    {
+      "text": "how do we assign the five visual studio subscriptions that are available in our membership?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "what if i have more questions about the bizspark program?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how do i transfer azure resources to my bizspark azure subscription?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "how do i get a get a signed baa from microsoft?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "i need a baa for hipaa compliance.",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "do you have itar compliance?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "how do i get a baa from microsoft?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "how do i get a signed baa from microsoft?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "how do i get a baa?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "where can i get compliance information?",
+      "intent": "AzureCompliance",
+      "entities": []
+    },
+    {
+      "text": "what can you do?",
+      "intent": "None",
+      "entities": []
+    },
+    {
+      "text": "do you have hipaa compliance?",
+      "intent": "AzureCompliance",
+      "entities": []
+    }
+  ]
+}
