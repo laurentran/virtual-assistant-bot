@@ -62,7 +62,7 @@ intents
 
 bot.dialog('/compliance', [
     function (session, args) {
-        builder.Prompts.confirm(session, "You asked about Azure Compliance. Is that correct?");
+        builder.Prompts.text(session, "You asked about Azure Compliance. Is that correct?");
     },
     function (session, results) {
         if (results.response.toLowerCase() == 'y' || results.response.toLowerCase() == 'yes') {
