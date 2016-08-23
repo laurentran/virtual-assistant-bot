@@ -54,9 +54,29 @@ intents
     })
     //LUIS intent matches
     .matches('AzureCompliance', '/compliance')
+    .matches('OfficeHours', '/officehours')
+    .matches('SupportRequest', '/support')
+    .matches('Documentation', '/documentation')
+    .matches('Rude', '/rude')
     .onDefault(builder.DialogAction.send("I'm sorry. I didn't understand, but I'm learning."));
 
 bot.dialog('/compliance', function (session, args) {
     session.send("You asked about Azure Compliance.");
+    session.endDialog();
+});
+bot.dialog('/officehours', function (session, args) {
+    session.send("It seems like you want to schedule office hours.");
+    session.endDialog();
+});
+bot.dialog('/support', function (session, args) {
+    session.send("Sounds like you're having a problem. This is a support request.");
+    session.endDialog();
+});
+bot.dialog('/documentation', function (session, args) {
+    session.send("It sounds like you're asking for documentation.");
+    session.endDialog();
+});
+bot.dialog('/rude', function (session, args) {
+    session.send("Well, you're just being rude.");
     session.endDialog();
 });
