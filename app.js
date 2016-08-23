@@ -64,32 +64,33 @@ bot.dialog('/compliance', [
     function (session, args) {
         builder.Prompts.text(session, "You asked about Azure Compliance. Is that correct?");
     },
-    function (session, results) {
-        if (results.response.toLowerCase() == 'y' || results.response.toLowerCase() == 'yes') {
-            session.endDialog("Ok, I'm getting the hang of things.");
-        } else {
-            session.endDialog("Darn. Ok, I've logged this for review.");
-        }        
-        
-    }
- 
+    confirmIntent
 ]);
-bot.dialog('/officehours', function (session, args) {
-    session.endDialog("It seems like you want to schedule office hours.");
-});
-bot.dialog('/support', function (session, args) {
-    session.endDialog("Sounds like you're having a problem. This is a support request.");
-});
-bot.dialog('/documentation', function (session, args) {
-    session.endDialog("It sounds like you're asking for documentation.");
-});
+bot.dialog('/officehours', [
+    function (session, args) {
+        builder.Prompts.text(session, "You asked about Azure Compliance. Is that correct?");
+    },
+    confirmIntent
+]);
+bot.dialog('/support', [
+    function (session, args) {
+        builder.Prompts.text(session, "You made a Support Request. Is that correct?");
+    },
+    confirmIntent
+]);
+bot.dialog('/documentation', [
+    function (session, args) {
+        builder.Prompts.text(session, "You asked about Documentation. Is that correct?");
+    },
+    confirmIntent
+]);
 bot.dialog('/rude', function (session, args) {
     session.endDialog("Well, you're just being rude.");
 });
 bot.dialog('/didnotunderstand', [
     function (session, args) {
-        builder.Prompts.text(session, "I'm sorry. I didn't understand, but I'm learning. What was your intent here?");
-        
+        console.log(session.message.text);
+        builder.Prompts.text(session, "I'm sorry. I didn't understand, but I'm learning. What was your intent here?")
     }, 
     function (session, results) {
         console.log(session.message.text);
@@ -110,3 +111,11 @@ bot.dialog('/firstRun', [
         session.endDialog("Hi %s, ask me a startup question and I'll try to correctly map it to an intent.", session.userData.name); 
     }
 ]);
+
+function confirmIntent (session, results) {
+    if (results.response.toLowerCase() == 'y' || results.response.toLowerCase() == 'yes') {
+        session.endDialog("Ok, I'm getting the hang of things.");
+    } else {
+        session.endDialog("Darn. Ok, I've logged this for review.");
+    }          
+}
