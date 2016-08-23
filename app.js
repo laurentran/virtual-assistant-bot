@@ -66,29 +66,25 @@ bot.dialog('/compliance', [
     },
     function (session, results) {
         if (results.response.toLowerCase() == 'y' || results.response.toLowerCase() == 'yes') {
-            session.send("Ok, I'm getting the hang of things.");
+            session.endDialog("Ok, I'm getting the hang of things.");
         } else {
-            session.send("Darn. Ok, I've logged this for review.");
+            session.endDialog("Darn. Ok, I've logged this for review.");
         }        
-        session.endDialog();
+        
     }
  
 ]);
 bot.dialog('/officehours', function (session, args) {
-    session.send("It seems like you want to schedule office hours.");
-    session.endDialog();
+    session.endDialog("It seems like you want to schedule office hours.");
 });
 bot.dialog('/support', function (session, args) {
-    session.send("Sounds like you're having a problem. This is a support request.");
-    session.endDialog();
+    session.endDialog("Sounds like you're having a problem. This is a support request.");
 });
 bot.dialog('/documentation', function (session, args) {
-    session.send("It sounds like you're asking for documentation.");
-    session.endDialog();
+    session.endDialog("It sounds like you're asking for documentation.");
 });
 bot.dialog('/rude', function (session, args) {
-    session.send("Well, you're just being rude.");
-    session.endDialog();
+    session.endDialog("Well, you're just being rude.");
 });
 bot.dialog('/didnotunderstand', [
     function (session, args) {
@@ -97,8 +93,7 @@ bot.dialog('/didnotunderstand', [
     }, 
     function (session, results) {
         console.log(session.message.text);
-        session.send("Ok, I've logged this for review. Please ask another question.");
-        session.endDialog();
+        session.endDialog("Ok, I've logged this for review. Please ask another question.");
     }
 ]);
 
