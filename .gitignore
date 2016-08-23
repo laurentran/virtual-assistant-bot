@@ -1,6 +1,6 @@
 # Project files
 *.csv
-config.json
+local_config.json
 
 node_modules/
 

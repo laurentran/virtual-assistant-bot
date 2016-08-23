@@ -5,8 +5,9 @@ var restify = require('restify'),
 // Create nconf environment to load keys and connections strings
 // which should not end up on GitHub
     nconf 
-        .file({ file: './config.json' }) 
-        .env(); 
+        .file({ file: './prod_config.json' })        // Included in repo
+        .file({ file: './local_config.json' })  // Exists locally; not committed
+        .env();                                 // environment vars
 
 //=========================================================
 // Bot Setup
@@ -14,7 +15,7 @@ var restify = require('restify'),
 
 // Setup Restify Server
 var server = restify.createServer();
-server.listen(process.env.port || process.env.PORT || 3978, function () {
+server.listen( nconf.get("port"), function () {
    console.log('%s listening to %s', server.name, server.url); 
 });
   
