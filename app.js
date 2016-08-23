@@ -44,7 +44,7 @@ var intents = new builder.IntentDialog({ recognizers: [recognizer] });
 bot.dialog('/', intents);
 
 intents
-    .onBegin(builder.DialogAction.send("Hi, I'm your startup assistant!"))
+    //.onBegin(builder.DialogAction.send("Hi, I'm your startup assistant!"))
     // Simple regex commands
     .matches(/^hello/i, function (session) {
         session.send("Hi there!");
@@ -58,12 +58,22 @@ intents
     .matches('SupportRequest', '/support')
     .matches('Documentation', '/documentation')
     .matches('Rude', '/rude')
-    .onDefault(builder.DialogAction.send("I'm sorry. I didn't understand, but I'm learning."));
+    .onDefault('/didnotunderstand');
 
-bot.dialog('/compliance', function (session, args) {
-    session.send("You asked about Azure Compliance.");
-    session.endDialog();
-});
+bot.dialog('/compliance', [
+    function (session, args) {
+        builder.Prompts.confirm(session, "You asked about Azure Compliance. Is that correct?");
+    },
+    function (session, results) {
+        if (results.response.toLowerCase() == 'y' || results.response.toLowerCase() == 'yes') {
+            session.send("Ok, I'm getting the hang of things.");
+        } else {
+            session.send("Darn. Ok, I've logged this for review.");
+        }        
+        session.endDialog();
+    }
+ 
+]);
 bot.dialog('/officehours', function (session, args) {
     session.send("It seems like you want to schedule office hours.");
     session.endDialog();
@@ -80,3 +90,28 @@ bot.dialog('/rude', function (session, args) {
     session.send("Well, you're just being rude.");
     session.endDialog();
 });
+bot.dialog('/didnotunderstand', [
+    function (session, args) {
+        session.send("I'm sorry. I didn't understand, but I'm learning.");
+        builder.Prompts.text(session, "What was your intent here?");
+        
+    }, 
+    function (session, results) {
+        session.send("Ok, I've logged this for review. Please ask another question.");
+        session.endDialog();
+    }
+]);
+
+// Install First Run middleware and dialog
+bot.use(builder.Middleware.firstRun({ version: 1.0, dialogId: '*:/firstRun' }));
+bot.dialog('/firstRun', [
+    function (session) {
+        builder.Prompts.text(session, "Hello... What's your name?");
+    },
+    function (session, results) {
+        // We'll save the users name and send them an initial greeting. All 
+        // future messages from the user will be routed to the root dialog.
+        session.userData.name = results.response;
+        session.endDialog("Hi %s, ask me a startup question and I'll try to correctly map it to an intent.", session.userData.name); 
+    }
+]);
